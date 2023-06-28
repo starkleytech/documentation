@@ -16,7 +16,7 @@ This guide will mainly focus on helping you decide to become a nominator or a va
 !!! hint "Nominator"
     The rewards for nominators are paid out pro-rata after the validator reward is deducted. That means your share of the total nominator rewards per validator will increase with the number of coins you staked on that specific validator. This system should motivate nominators to stake on lower-staked validators and thus should create a balanced-staked validator set.
 
-## **How does Staking work in Smart DEX Chain and Kusari**
+## **How does Staking work in SwapDEX Chain and Kusari**
 ---
 ### **Identify which role you are**
 

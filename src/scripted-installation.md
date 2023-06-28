@@ -13,7 +13,7 @@ To install SwapDEX, you can use the provided installation script. This guide wil
 
 > ````
 > wget https://raw.githubusercontent.com/starkleytech/swapdex-install-script/main/install_swapdex.sh && chmod +x install_swapdex.sh && ./install_swapdex.sh
-> ```
+
 
 This command will download the script, make it executable, and execute it.
 

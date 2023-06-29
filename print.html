@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="about_sdx.html"><strong aria-hidden="true">1.</strong> About SwapDex</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="whitepaper.html"><strong aria-hidden="true">1.1.</strong> White Paper</a></li></ol></li><li class="chapter-item expanded "><a href="staking.html"><strong aria-hidden="true">2.</strong> Staking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="run_a_validator.html"><strong aria-hidden="true">2.1.</strong> Run a validator</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="scripted-installation.html"><strong aria-hidden="true">2.1.1.</strong> Scripted Installation</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">3.</strong> FAQ</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="about_sdx.html"><strong aria-hidden="true">1.</strong> About SwapDex</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="whitepaper.html"><strong aria-hidden="true">1.1.</strong> White Paper</a></li></ol></li><li class="chapter-item expanded "><a href="staking.html"><strong aria-hidden="true">2.</strong> Staking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="run_a_validator.html"><strong aria-hidden="true">2.1.</strong> Run a validator</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="scripted-installation.html"><strong aria-hidden="true">2.1.1.</strong> Scripted Installation</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">3.</strong> FAQ</a></li><li class="chapter-item expanded "><a href="wallets/index.html"><strong aria-hidden="true">4.</strong> Creating Your Wallets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="wallets/what_is_a_wallet.html"><strong aria-hidden="true">4.1.</strong> What is a Wallet?</a></li><li class="chapter-item expanded "><a href="wallets/web_wallet.html"><strong aria-hidden="true">4.2.</strong> SwapDex Web</a></li><li class="chapter-item expanded "><a href="wallets/app_wallet.html"><strong aria-hidden="true">4.3.</strong> SwapDex Desktop - Mobile</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -450,6 +450,122 @@ Work in progress content can change and it's not definitive :building_constructi
 <p>If you encounter any issues during the installation process, please refer to the script's output and logs for error messages or contact the support team for assistance.</p>
 <p><strong>Note:</strong> It's recommended to have basic knowledge of server administration and networking concepts before proceeding with the installation.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="faq"><a class="header" href="#faq">FAQ</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="wallets-management"><a class="header" href="#wallets-management">Wallets Management</a></h1>
+<p>This guide provides instructions on how to create a SwapDex wallet. There are two options available:</p>
+<ol>
+<li><a href="wallets/index.html#option-1-creating-a-wallet-with-our-desktop-and-mobile-apps">Option 1: Creating A Wallet With Our Desktop And Mobile Apps</a></li>
+<li><a href="wallets/index.html#option-2-creating-a-wallet-with-our-web-app">Option 2: Creating A Wallet With Our Web App</a></li>
+</ol>
+<h2 id="option-1-creating-a-wallet-with-our-desktop-and-mobile-apps"><a class="header" href="#option-1-creating-a-wallet-with-our-desktop-and-mobile-apps">Option 1: Creating A Wallet With Our Desktop And Mobile Apps</a></h2>
+<p><a href="wallets/./app_wallet.html">Link to Desktop and Mobile Apps Wallet Creation Page</a></p>
+<p>In this option, you can use our dedicated desktop and mobile applications to create a SwapDex wallet. These applications provide a user-friendly interface and guide you through the wallet creation process step by step.</p>
+<p>To create a wallet using our desktop and mobile apps, follow the instructions provided in the <a href="wallets/./app_wallet.html">Desktop and Mobile Apps Wallet Creation</a> page.</p>
+<h2 id="option-2-creating-a-wallet-with-our-web-app"><a class="header" href="#option-2-creating-a-wallet-with-our-web-app">Option 2: Creating A Wallet With Our Web App</a></h2>
+<p><a href="wallets/./web_wallet.html">Link to Web App Wallet Creation Page</a></p>
+<p>If you prefer to create your wallet through a web browser without installing any additional applications, you can use our web app. This option provides you with the flexibility to create and manage your wallet from any device with internet access.</p>
+<p>Refer to the <a href="wallets/./web_wallet.html">Web App Wallet Creation</a> page for detailed instructions on how to create a wallet using our web app.</p>
+<p>Choose the option that suits your requirements and proceed with the respective guide to create your SwapDex wallet.</p>
+<p><strong>Note:</strong> It's recommended to have a secure internet connection and take necessary precautions to protect your private keys and wallet information.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-a-wallet"><a class="header" href="#what-is-a-wallet">What Is A Wallet?</a></h1>
+<h2 id="what-is-a-mnemonic-phrase"><a class="header" href="#what-is-a-mnemonic-phrase">What Is A Mnemonic Phrase?</a></h2>
+<p>Mnemonic Phrases, also known as seed phrases or recovery phrases, are a sequence of 12 or 24 random words that provide the data needed to recover a lost or broken crypto wallet. By having this phrase, you can access all your cryptocurrencies within the wallet even if you lose or delete it. It's critical to keep your phrase words secure because anyone with possession of your seed phrase also has access and can authorize moving or selling your cryptocurrency. We highly recommend writing your seed phrase down on a physical piece of paper and storing it in a secure location that no one else can gain access to.</p>
+<p>The seed phrase is the master key to your crypto funds in a wallet, and you are responsible for its safety. Seed phrases cannot be recovered. If you lose your phrase, you will not be able to access this crypto wallet again.</p>
+<p>Crypto wallets are also chain-specific. SwapDEX is built with Substrate Technology, so you can use your existing substrate seed phrase with our network, or you can use your SwapDEX seed phrase with other Substrate-based chains. We also have an EVM (Ethereum Virtual Machine). If you want to use that, you will need a seed phrase. If you use our web app instead of our native mobile app or desktop apps, you will need to have Metamask and Polkadot.js extensions with wallets set up. It is recommended to use our native apps.</p>
+<h2 id="what-is-a-crypto-wallet"><a class="header" href="#what-is-a-crypto-wallet">What is a crypto wallet?</a></h2>
+<p>A crypto wallet is software or hardware that enables users to store and use their cryptocurrency. Cryptocurrency has no tangible currency (no paper money) to place within a physical wallet or purse. Cryptocurrency exists on blockchains.</p>
+<p>A crypto wallet provides visibility into how much cryptocurrency the user owns. A crypto wallet also enables users to send and receive cryptocurrency transactions and to connect to decentralized applications. For many users, a crypto wallet is the primary mechanism for managing cryptocurrency balances.</p>
+<p>With SwapDEX, because we are a decentralized exchange, you will be using your wallet to connect with our chain to gain access to our decentralized exchanges and our marketplace through one of our apps. Unlike centralized exchanges, your crypto will not leave your wallet. Your crypto will always be in your possession. That's what makes SwapDEX so special.</p>
+<h2 id="types-of-crypto-wallets"><a class="header" href="#types-of-crypto-wallets">Types of crypto wallets</a></h2>
+<p>There are two main types of crypto wallets: hot wallets and cold wallets. The primary difference between them is their internet connectivity.</p>
+<ul>
+<li>Hot wallets (web wallets, desktop/mobile wallets) are connected to the internet, making them more user-friendly but less secure. They are suitable for regular transactions and trading.</li>
+<li>Cold wallets (paper wallets, hardware wallets) are stored offline, providing improved security by reducing the risk of online attacks. They are better suited for long-term holdings.</li>
+</ul>
+<p>Hot wallets are more likely to be used by traders for regular transactions, and cold wallets are more suitable for long-term holdings. Hot wallets are simple to set up, and the funds are easy to access, making them convenient for trading. Cold wallets are hack-resistant, making cold storage suitable for holding crypto for longer periods of time. As a protection method, it's a good idea to only store a small percentage in hot wallets and larger amounts in cold storage.</p>
+<h2 id="custodial-vs-noncustodial-wallets"><a class="header" href="#custodial-vs-noncustodial-wallets">Custodial vs. noncustodial wallets</a></h2>
+<p>Crypto wallet types are either custodial or noncustodial. The fundamental difference between custodial and noncustodial wallets is control.</p>
+<ul>
+<li>
+<p>Custodial wallets are crypto wallets in which the custody is managed by a third party, typically a centralized cryptocurrency exchange. Custodial wallets are suitable for users who don't want to fuss too much with security and who are not concerned with trusting a third party to hold their crypto. However, it's generally not advised to keep large amounts of cryptocurrency in a custodial wallet due to potential risks like hacks or even the exchange going bankrupt.</p>
+</li>
+<li>
+<p>Noncustodial wallets are crypto wallets where the custody is held by the individual who has the private keys for their crypto assets and is responsible for securing them. Noncustodial wallets don't require a user to trust a third party for account security, but they do require a substantial amount of self-trust. Remember, if a private key is lost or compromised, a user's funds can be drained or otherwise rendered irretrievable.</p>
+</li>
+</ul>
+<p>Both custodial and noncustodial wallets have numerous benefits and potential disadvantages, depending on the type of wallet being used. However, there is a risk associated with both custodial and noncustodial types of wallets, with the greatest risk being the potential for theft, fraud, or cyber attacks.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="web-app"><a class="header" href="#web-app">Web App</a></h2>
+<p>To use our web app, you will need to install both the Metamask and Polkadot.js extensions and set up a wallet in each of them. These extensions are not built into our web app like they are in our native apps. Here are the links to download and install them:</p>
+<ul>
+<li><a href="https://metamask.io/download/">Metamask Extension</a></li>
+<li><a href="https://polkadot.js.org/extension/">Polkadot.js Extension</a></li>
+</ul>
+<p>Once you have set up your wallets, follow these steps:</p>
+<ol>
+<li>
+<p>Open our web app.</p>
+</li>
+<li>
+<p>Expand the Wallets section on the left side menu of the SwapDEX Dashboard and select &quot;Account&quot;.</p>
+</li>
+<li>
+<p>Metamask will pop up, prompting you to sign in. Sign in to your Metamask wallet.</p>
+</li>
+<li>
+<p>After signing in, you will be prompted to &quot;Connect with Metamask&quot;. Select &quot;Next&quot;.</p>
+</li>
+<li>
+<p>You will then be asked if you would like to add the SwapDEX network to Metamask. Select &quot;Accept&quot;.</p>
+</li>
+<li>
+<p>Next, you will be asked to connect to our network. Select &quot;Connect&quot;.</p>
+</li>
+</ol>
+<div align="center">
+  <img src="wallets/../assets/metamask.png" alt="Metamask">
+</div>
+<ol start="7">
+<li>Your Polkadot.js extension will automatically add your Substrate accounts to the wallets section, and all of your accounts should now be visible.</li>
+</ol>
+<div align="center">
+  <img src="wallets/../assets/wallet.png" alt="SwapDEX Wallet">
+</div>
+<p>You can now start bridging assets from other chains to your SwapDEX wallet to start trading on our exchanges or buying NFTs from our marketplace.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="creating-a-wallet--mobile-and-desktop-"><a class="header" href="#creating-a-wallet--mobile-and-desktop-">Creating a Wallet ( Mobile and Desktop )</a></h2>
+<p>To create a wallet on SwapDEX, follow these steps:</p>
+<ol>
+<li>
+<p>Open the SwapDEX Dashboard and navigate to the Wallets section on the left-side menu.</p>
+</li>
+<li>
+<p>Select &quot;Account,&quot; and it will display a list of your current wallets if you have any.</p>
+<blockquote>
+<p>Note: If you are new to crypto and would like to know more about wallets, seed phrases, and how to use them, <a href="wallets/./what_is_a_wallet.html">click here</a>.</p>
+</blockquote>
+</li>
+<li>
+<p>You need to create both a Substrate wallet and an EVM wallet. The process to create them is the same.</p>
+</li>
+<li>
+<p>Enter your password and select &quot;Create Substrate Account,&quot; or if you already have an existing substrate account, choose the import option.</p>
+<blockquote>
+<p>Once successful, you will be prompted to save your Mnemonic Seed Phrase.</p>
+<p>Make sure you save this set of words somewhere safe, as it is your access code to your crypto. Losing this seed phrase means losing access to your crypto in this wallet forever. Keep it secure and do not share it with anyone.</p>
+</blockquote>
+</li>
+<li>
+<p>Select &quot;Save For Later Use.&quot;</p>
+</li>
+<li>
+<p>You will be redirected back to your wallets section, and your new wallet should be added to your list of wallets.</p>
+</li>
+<li>
+<p>To create an EVM wallet, follow the same process. Simply select &quot;+EVM&quot; on the top left of your wallets.</p>
+</li>
+</ol>
+<div align="center">
+  <img src="wallets/../assets/wallet.png" alt="SwapDEX Wallet">
+</div>
+<p>Congratulations! You have successfully created your wallets on SwapDEX. You can now start bridging assets from other chains to your SwapDEX wallet to begin trading on our exchanges or buying NFTs from our marketplace.</p>
 
                     </main>
 

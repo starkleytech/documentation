@@ -37,6 +37,7 @@ What are the tokenomics for SDX?
 - **Documentation**: [Read the docs](https://docs.swapdex.network/)
 - **EVM Explorer (SDX)**: [Explore](https://evm.swapdex.network)
 - **Explorer (Substrate)**: [Explore](https://app.swapdex.network/swapdex/explorer/extrinsic)
+- **Unified API**: [Access the API](https://unified-api.swapdex.network/)
 - **Twitter**: [Follow us](https://twitter.com/swapdexo)
 - **YouTube**: [Watch our videos](https://www.youtube.com/channel/UCSeVQXDI3kdDS_U0gWBgmgQ)
 - **Telegram**: [Join the group](https://t.me/Officialswapdexgroup)

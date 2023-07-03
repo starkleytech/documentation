@@ -83,16 +83,38 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="about_sdx.html"><strong aria-hidden="true">1.</strong> About SwapDex</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="whitepaper.html" class="active"><strong aria-hidden="true">1.1.</strong> White Paper</a></li></ol></li><li class="chapter-item expanded "><a href="staking.html"><strong aria-hidden="true">2.</strong> Staking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="run_a_validator.html"><strong aria-hidden="true">2.1.</strong> Run a validator</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="scripted-installation.html"><strong aria-hidden="true">2.1.1.</strong> Scripted Installation</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">3.</strong> FAQ</a></li><li class="chapter-item expanded "><a href="wallets/index.html"><strong aria-hidden="true">4.</strong> Creating Your Wallets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="wallets/what_is_a_wallet.html"><strong aria-hidden="true">4.1.</strong> What is a Wallet?</a></li><li class="chapter-item expanded "><a href="wallets/web_wallet.html"><strong aria-hidden="true">4.2.</strong> SwapDex Web</a></li><li class="chapter-item expanded "><a href="wallets/app_wallet.html"><strong aria-hidden="true">4.3.</strong> SwapDex Desktop - Mobile</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="about_sdx.html"><strong aria-hidden="true">1.</strong> About SwapDex</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="whitepaper.html" class="active"><strong aria-hidden="true">1.1.</strong> White Paper</a></li></ol></li><li class="chapter-item expanded "><a href="staking.html"><strong aria-hidden="true">2.</strong> Staking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="staking/nominate.html"><strong aria-hidden="true">2.1.</strong> Nominate</a></li><li class="chapter-item expanded "><a href="run_a_validator.html"><strong aria-hidden="true">2.2.</strong> Run a validator</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="scripted-installation.html"><strong aria-hidden="true">2.2.1.</strong> Scripted Installation</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="wallets/index.html"><strong aria-hidden="true">3.</strong> Creating Your Wallets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="wallets/what_is_a_wallet.html"><strong aria-hidden="true">3.1.</strong> What is a Wallet?</a></li><li class="chapter-item expanded "><a href="wallets/web_wallet.html"><strong aria-hidden="true">3.2.</strong> SwapDex Web</a></li><li class="chapter-item expanded "><a href="wallets/app_wallet.html"><strong aria-hidden="true">3.3.</strong> SwapDex Desktop - Mobile</a></li><li class="chapter-item expanded "><a href="wallets/create_asset.html"><strong aria-hidden="true">3.4.</strong> Create An Asset</a></li></ol></li><li class="chapter-item expanded "><a href="bridge/bridge.html"><strong aria-hidden="true">4.</strong> Bridge</a></li><li class="chapter-item expanded "><a href="nft_marketplace/index.html"><strong aria-hidden="true">5.</strong> NFT Marketplace</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="nft_marketplace/buy/buy_and_bid.html"><strong aria-hidden="true">5.1.</strong> Buying And Bidding On NFT's</a></li><li class="chapter-item expanded "><a href="nft_marketplace/buy/claim_auction.html"><strong aria-hidden="true">5.2.</strong> Claiming Your Auction Wins</a></li><li class="chapter-item expanded "><a href="nft_marketplace/sell/sell_and_auctionning.html"><strong aria-hidden="true">5.3.</strong>  Selling And Auctioning Your NFT's Auction Wins</a></li><li class="chapter-item expanded "><a href="nft_marketplace/sell/minting_nft.html"><strong aria-hidden="true">5.4.</strong> Minting NFT's</a></li><li class="chapter-item expanded "><a href="nft_marketplace/sell/cancel_auction.html"><strong aria-hidden="true">5.5.</strong> Canceling An Auction</a></li><li class="chapter-item expanded "><a href="nft_marketplace/earn/referrals_and_comissions.html"><strong aria-hidden="true">5.6.</strong> Earn Referrals And Commissions</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>

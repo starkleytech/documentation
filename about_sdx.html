@@ -83,16 +83,38 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="about_sdx.html" class="active"><strong aria-hidden="true">1.</strong> About SwapDex</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="whitepaper.html"><strong aria-hidden="true">1.1.</strong> White Paper</a></li></ol></li><li class="chapter-item expanded "><a href="staking.html"><strong aria-hidden="true">2.</strong> Staking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="run_a_validator.html"><strong aria-hidden="true">2.1.</strong> Run a validator</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="scripted-installation.html"><strong aria-hidden="true">2.1.1.</strong> Scripted Installation</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">3.</strong> FAQ</a></li><li class="chapter-item expanded "><a href="wallets/index.html"><strong aria-hidden="true">4.</strong> Creating Your Wallets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="wallets/what_is_a_wallet.html"><strong aria-hidden="true">4.1.</strong> What is a Wallet?</a></li><li class="chapter-item expanded "><a href="wallets/web_wallet.html"><strong aria-hidden="true">4.2.</strong> SwapDex Web</a></li><li class="chapter-item expanded "><a href="wallets/app_wallet.html"><strong aria-hidden="true">4.3.</strong> SwapDex Desktop - Mobile</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="about_sdx.html" class="active"><strong aria-hidden="true">1.</strong> About SwapDex</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="whitepaper.html"><strong aria-hidden="true">1.1.</strong> White Paper</a></li></ol></li><li class="chapter-item expanded "><a href="staking.html"><strong aria-hidden="true">2.</strong> Staking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="staking/nominate.html"><strong aria-hidden="true">2.1.</strong> Nominate</a></li><li class="chapter-item expanded "><a href="run_a_validator.html"><strong aria-hidden="true">2.2.</strong> Run a validator</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="scripted-installation.html"><strong aria-hidden="true">2.2.1.</strong> Scripted Installation</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="wallets/index.html"><strong aria-hidden="true">3.</strong> Creating Your Wallets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="wallets/what_is_a_wallet.html"><strong aria-hidden="true">3.1.</strong> What is a Wallet?</a></li><li class="chapter-item expanded "><a href="wallets/web_wallet.html"><strong aria-hidden="true">3.2.</strong> SwapDex Web</a></li><li class="chapter-item expanded "><a href="wallets/app_wallet.html"><strong aria-hidden="true">3.3.</strong> SwapDex Desktop - Mobile</a></li><li class="chapter-item expanded "><a href="wallets/create_asset.html"><strong aria-hidden="true">3.4.</strong> Create An Asset</a></li></ol></li><li class="chapter-item expanded "><a href="bridge/bridge.html"><strong aria-hidden="true">4.</strong> Bridge</a></li><li class="chapter-item expanded "><a href="nft_marketplace/index.html"><strong aria-hidden="true">5.</strong> NFT Marketplace</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="nft_marketplace/buy/buy_and_bid.html"><strong aria-hidden="true">5.1.</strong> Buying And Bidding On NFT's</a></li><li class="chapter-item expanded "><a href="nft_marketplace/buy/claim_auction.html"><strong aria-hidden="true">5.2.</strong> Claiming Your Auction Wins</a></li><li class="chapter-item expanded "><a href="nft_marketplace/sell/sell_and_auctionning.html"><strong aria-hidden="true">5.3.</strong>  Selling And Auctioning Your NFT's Auction Wins</a></li><li class="chapter-item expanded "><a href="nft_marketplace/sell/minting_nft.html"><strong aria-hidden="true">5.4.</strong> Minting NFT's</a></li><li class="chapter-item expanded "><a href="nft_marketplace/sell/cancel_auction.html"><strong aria-hidden="true">5.5.</strong> Canceling An Auction</a></li><li class="chapter-item expanded "><a href="nft_marketplace/earn/referrals_and_comissions.html"><strong aria-hidden="true">5.6.</strong> Earn Referrals And Commissions</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
@@ -145,6 +167,51 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="about-swapdex-network"><a class="header" href="#about-swapdex-network">About SwapDex Network</a></h1>
+<p>Welcome to <strong>SwapDex</strong>, your gateway to decentralized finance. We offer limit order decentralized exchanges for precision trading, an NFT Marketplace and Crypto Shops for digital art and collectibles, seamless integration with 3rd Party Dapps, and secure wallet connectivity, ensuring &quot;your key, your funds&quot; - all in one revolutionary blockchain platform.</p>
+<h1 id="tokenomics"><a class="header" href="#tokenomics">Tokenomics</a></h1>
+<p>What are the tokenomics for SDX?</p>
+<ul>
+<li><strong>Starting Supply</strong>: 200,000,000 SDX</li>
+<li><strong>Circulating Supply</strong>: 110 Million SDX</li>
+<li><strong>Foundation</strong>: 50 Million SDX</li>
+<li><strong>Treasury</strong>: 40 Million SDX (fully released)</li>
+</ul>
+<h1 id="how-to-add-sdx-in-metamask"><a class="header" href="#how-to-add-sdx-in-metamask">How to Add SDX in MetaMask</a></h1>
+<ul>
+<li><strong>SwapDex RPC URL</strong>: <code>https://rpc.swapdex.network/</code></li>
+<li><strong>Chain ID</strong>: <code>230</code></li>
+<li><strong>Currency Symbol</strong>: <code>SDX</code></li>
+<li><strong>Explorer</strong>: <a href="https://evm.swapdex.network/">SwapDex EVM Explorer</a></li>
+</ul>
+<h2 id="where-to-buy-sdx"><a class="header" href="#where-to-buy-sdx">Where to Buy SDX</a></h2>
+<ul>
+<li><a href="https://pancakeswap.finance/swap?outputCurrency=0xa4d92138537bb0bbeaeab095381be422d785e7c4">PancakeSwap</a></li>
+<li><a href="https://p2pb2b.com/trade/SDX_USDT/">P2PB2B Exchange</a></li>
+</ul>
+<h2 id="official-foreign-addresses-of-tokens-bridge"><a class="header" href="#official-foreign-addresses-of-tokens-bridge">Official Foreign Addresses of Tokens (Bridge)</a></h2>
+<ul>
+<li><strong>SDX on BSC (bSDX)</strong>: <code>0x351494731D28f35d648C200b35E628aecba3E577</code></li>
+<li><strong>SDX on ETH (SDX)</strong>: <code>0x6b5FeC1351C9ff830db0ebE343a235976b6352Ea</code></li>
+</ul>
+<h2 id="official-links"><a class="header" href="#official-links">Official Links</a></h2>
+<ul>
+<li><strong>Desktop Wallet</strong> (Mac, Linux, Windows): <a href="https://github.com/Swapdex-Protocol/Dashboard/releases">Download here</a></li>
+<li><strong>Discord</strong>: <a href="https://discord.swapdex.network">Join the community</a></li>
+<li><strong>Website</strong>: <a href="https://swapdex.network">Visit SwapDex</a></li>
+<li><strong>Dashboard</strong>: <a href="https://app.swapdex.network/">Access the app</a></li>
+<li><strong>Documentation</strong>: <a href="https://docs.swapdex.network/">Read the docs</a></li>
+<li><strong>EVM Explorer (SDX)</strong>: <a href="https://evm.swapdex.network">Explore</a></li>
+<li><strong>Explorer (Substrate)</strong>: <a href="https://app.swapdex.network/swapdex/explorer/extrinsic">Explore</a></li>
+<li><strong>Twitter</strong>: <a href="https://twitter.com/swapdexo">Follow us</a></li>
+<li><strong>YouTube</strong>: <a href="https://www.youtube.com/channel/UCSeVQXDI3kdDS_U0gWBgmgQ">Watch our videos</a></li>
+<li><strong>Telegram</strong>: <a href="https://t.me/Officialswapdexgroup">Join the group</a></li>
+<li><strong>Forum</strong>: <a href="https://forum.swapdex.network/">Join the discussion</a></li>
+<li><strong>iPhone App</strong>: <a href="https://apps.apple.com/de/app/swapdex-dashboard/id1634027404?l=en">Download on the App Store</a></li>
+<li><strong>Android App</strong>: <a href="https://play.google.com/store/apps/details?id=swapdex.dashboard&amp;gl=EN">Get it on Google Play</a></li>
+<li><strong>Node Documentation</strong>: <a href="https://node-doc.swapdex.network">Learn more</a></li>
+<li><strong>Status Page</strong>: <a href="https://status.swapdex.network/">Check status</a></li>
+<li><strong>Faucet</strong>: Go to Discord and type <code>!jack help</code> in the faucet channel.</li>
+</ul>
 
                     </main>
 

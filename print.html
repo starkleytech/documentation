@@ -84,16 +84,38 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="about_sdx.html"><strong aria-hidden="true">1.</strong> About SwapDex</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="whitepaper.html"><strong aria-hidden="true">1.1.</strong> White Paper</a></li></ol></li><li class="chapter-item expanded "><a href="staking.html"><strong aria-hidden="true">2.</strong> Staking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="run_a_validator.html"><strong aria-hidden="true">2.1.</strong> Run a validator</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="scripted-installation.html"><strong aria-hidden="true">2.1.1.</strong> Scripted Installation</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">3.</strong> FAQ</a></li><li class="chapter-item expanded "><a href="wallets/index.html"><strong aria-hidden="true">4.</strong> Creating Your Wallets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="wallets/what_is_a_wallet.html"><strong aria-hidden="true">4.1.</strong> What is a Wallet?</a></li><li class="chapter-item expanded "><a href="wallets/web_wallet.html"><strong aria-hidden="true">4.2.</strong> SwapDex Web</a></li><li class="chapter-item expanded "><a href="wallets/app_wallet.html"><strong aria-hidden="true">4.3.</strong> SwapDex Desktop - Mobile</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="about_sdx.html"><strong aria-hidden="true">1.</strong> About SwapDex</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="whitepaper.html"><strong aria-hidden="true">1.1.</strong> White Paper</a></li></ol></li><li class="chapter-item expanded "><a href="staking.html"><strong aria-hidden="true">2.</strong> Staking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="staking/nominate.html"><strong aria-hidden="true">2.1.</strong> Nominate</a></li><li class="chapter-item expanded "><a href="run_a_validator.html"><strong aria-hidden="true">2.2.</strong> Run a validator</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="scripted-installation.html"><strong aria-hidden="true">2.2.1.</strong> Scripted Installation</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="wallets/index.html"><strong aria-hidden="true">3.</strong> Creating Your Wallets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="wallets/what_is_a_wallet.html"><strong aria-hidden="true">3.1.</strong> What is a Wallet?</a></li><li class="chapter-item expanded "><a href="wallets/web_wallet.html"><strong aria-hidden="true">3.2.</strong> SwapDex Web</a></li><li class="chapter-item expanded "><a href="wallets/app_wallet.html"><strong aria-hidden="true">3.3.</strong> SwapDex Desktop - Mobile</a></li><li class="chapter-item expanded "><a href="wallets/create_asset.html"><strong aria-hidden="true">3.4.</strong> Create An Asset</a></li></ol></li><li class="chapter-item expanded "><a href="bridge/bridge.html"><strong aria-hidden="true">4.</strong> Bridge</a></li><li class="chapter-item expanded "><a href="nft_marketplace/index.html"><strong aria-hidden="true">5.</strong> NFT Marketplace</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="nft_marketplace/buy/buy_and_bid.html"><strong aria-hidden="true">5.1.</strong> Buying And Bidding On NFT's</a></li><li class="chapter-item expanded "><a href="nft_marketplace/buy/claim_auction.html"><strong aria-hidden="true">5.2.</strong> Claiming Your Auction Wins</a></li><li class="chapter-item expanded "><a href="nft_marketplace/sell/sell_and_auctionning.html"><strong aria-hidden="true">5.3.</strong>  Selling And Auctioning Your NFT's Auction Wins</a></li><li class="chapter-item expanded "><a href="nft_marketplace/sell/minting_nft.html"><strong aria-hidden="true">5.4.</strong> Minting NFT's</a></li><li class="chapter-item expanded "><a href="nft_marketplace/sell/cancel_auction.html"><strong aria-hidden="true">5.5.</strong> Canceling An Auction</a></li><li class="chapter-item expanded "><a href="nft_marketplace/earn/referrals_and_comissions.html"><strong aria-hidden="true">5.6.</strong> Earn Referrals And Commissions</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
@@ -146,233 +168,187 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="about-swapdex-network"><a class="header" href="#about-swapdex-network">About SwapDex Network</a></h1>
+<p>Welcome to <strong>SwapDex</strong>, your gateway to decentralized finance. We offer limit order decentralized exchanges for precision trading, an NFT Marketplace and Crypto Shops for digital art and collectibles, seamless integration with 3rd Party Dapps, and secure wallet connectivity, ensuring &quot;your key, your funds&quot; - all in one revolutionary blockchain platform.</p>
+<h1 id="tokenomics"><a class="header" href="#tokenomics">Tokenomics</a></h1>
+<p>What are the tokenomics for SDX?</p>
+<ul>
+<li><strong>Starting Supply</strong>: 200,000,000 SDX</li>
+<li><strong>Circulating Supply</strong>: 110 Million SDX</li>
+<li><strong>Foundation</strong>: 50 Million SDX</li>
+<li><strong>Treasury</strong>: 40 Million SDX (fully released)</li>
+</ul>
+<h1 id="how-to-add-sdx-in-metamask"><a class="header" href="#how-to-add-sdx-in-metamask">How to Add SDX in MetaMask</a></h1>
+<ul>
+<li><strong>SwapDex RPC URL</strong>: <code>https://rpc.swapdex.network/</code></li>
+<li><strong>Chain ID</strong>: <code>230</code></li>
+<li><strong>Currency Symbol</strong>: <code>SDX</code></li>
+<li><strong>Explorer</strong>: <a href="https://evm.swapdex.network/">SwapDex EVM Explorer</a></li>
+</ul>
+<h2 id="where-to-buy-sdx"><a class="header" href="#where-to-buy-sdx">Where to Buy SDX</a></h2>
+<ul>
+<li><a href="https://pancakeswap.finance/swap?outputCurrency=0xa4d92138537bb0bbeaeab095381be422d785e7c4">PancakeSwap</a></li>
+<li><a href="https://p2pb2b.com/trade/SDX_USDT/">P2PB2B Exchange</a></li>
+</ul>
+<h2 id="official-foreign-addresses-of-tokens-bridge"><a class="header" href="#official-foreign-addresses-of-tokens-bridge">Official Foreign Addresses of Tokens (Bridge)</a></h2>
+<ul>
+<li><strong>SDX on BSC (bSDX)</strong>: <code>0x351494731D28f35d648C200b35E628aecba3E577</code></li>
+<li><strong>SDX on ETH (SDX)</strong>: <code>0x6b5FeC1351C9ff830db0ebE343a235976b6352Ea</code></li>
+</ul>
+<h2 id="official-links"><a class="header" href="#official-links">Official Links</a></h2>
+<ul>
+<li><strong>Desktop Wallet</strong> (Mac, Linux, Windows): <a href="https://github.com/Swapdex-Protocol/Dashboard/releases">Download here</a></li>
+<li><strong>Discord</strong>: <a href="https://discord.swapdex.network">Join the community</a></li>
+<li><strong>Website</strong>: <a href="https://swapdex.network">Visit SwapDex</a></li>
+<li><strong>Dashboard</strong>: <a href="https://app.swapdex.network/">Access the app</a></li>
+<li><strong>Documentation</strong>: <a href="https://docs.swapdex.network/">Read the docs</a></li>
+<li><strong>EVM Explorer (SDX)</strong>: <a href="https://evm.swapdex.network">Explore</a></li>
+<li><strong>Explorer (Substrate)</strong>: <a href="https://app.swapdex.network/swapdex/explorer/extrinsic">Explore</a></li>
+<li><strong>Twitter</strong>: <a href="https://twitter.com/swapdexo">Follow us</a></li>
+<li><strong>YouTube</strong>: <a href="https://www.youtube.com/channel/UCSeVQXDI3kdDS_U0gWBgmgQ">Watch our videos</a></li>
+<li><strong>Telegram</strong>: <a href="https://t.me/Officialswapdexgroup">Join the group</a></li>
+<li><strong>Forum</strong>: <a href="https://forum.swapdex.network/">Join the discussion</a></li>
+<li><strong>iPhone App</strong>: <a href="https://apps.apple.com/de/app/swapdex-dashboard/id1634027404?l=en">Download on the App Store</a></li>
+<li><strong>Android App</strong>: <a href="https://play.google.com/store/apps/details?id=swapdex.dashboard&amp;gl=EN">Get it on Google Play</a></li>
+<li><strong>Node Documentation</strong>: <a href="https://node-doc.swapdex.network">Learn more</a></li>
+<li><strong>Status Page</strong>: <a href="https://status.swapdex.network/">Check status</a></li>
+<li><strong>Faucet</strong>: Go to Discord and type <code>!jack help</code> in the faucet channel.</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="swapdex-white-paper"><a class="header" href="#swapdex-white-paper">SwapDex White Paper</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="staking"><a class="header" href="#staking"><strong>STAKING</strong></a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="staking-on-swapdex-and-kusari-networks"><a class="header" href="#staking-on-swapdex-and-kusari-networks">STAKING on SwapDex and Kusari Networks</a></h1>
 <hr />
-<p>This guide will introduce you to the concept of staking on the SwapDEX and Kusari networks.
-SDX and KSI are utilizing a {=Proof-of-Stake=} consensus mechanism to agree on processes like block authoring and finality. 
-As the name implies, <strong>staking</strong> plays an essential role on both networks.</p>
-<p>In short, you have two options to stake. Either you stake in the form of nomination, or you stake by running a validation. 
-But staking, in general, means that you bind your SDX or KSI holdings for a specific purpose and time to receive rewards in return. </p>
-<p>This guide will mainly focus on helping you decide to become a nominator or a validator and give you some examples of the rewards you could expect.</p>
-<p>!!! hint &quot;Validator&quot;
-The staking system on SwapDEX and Kusari is designed to pay out rewards equally to all validators, regardless of their stake. That means the amount of staked coins on a validator does not influence its ability to author or validate more blocks. However, there is a probabilistic component to reward calculation (discussed below), so rewards may not be exactly equal for all validators in a given era.</p>
-<p>!!! hint &quot;Nominator&quot;
-The rewards for nominators are paid out pro-rata after the validator reward is deducted. That means your share of the total nominator rewards per validator will increase with the number of coins you staked on that specific validator. This system should motivate nominators to stake on lower-staked validators and thus should create a balanced-staked validator set.</p>
-<h2 id="how-does-staking-work-in-swapdex-chain-and-kusari"><a class="header" href="#how-does-staking-work-in-swapdex-chain-and-kusari"><strong>How does Staking work in SwapDEX Chain and Kusari</strong></a></h2>
+<p>Welcome to the comprehensive guide on staking within the SwapDex and Kusari networks. Both networks utilize a Proof-of-Stake consensus mechanism, where staking is a fundamental aspect. </p>
+<h2 id="what-is-staking"><a class="header" href="#what-is-staking">What is Staking?</a></h2>
 <hr />
-<h3 id="identify-which-role-you-are"><a class="header" href="#identify-which-role-you-are"><strong>Identify which role you are</strong></a></h3>
-<p>In staking, you can be either a nominator or a validator.</p>
-<p>As a nominator, you can nominate validator candidates that you trust to help you earn rewards in the chain's native coin. You can look at the <a href="https://docs.kusari.network/what-to-try/nominator/" target="_blank">nominator guide</a> to understand your responsibilities as a nominator and at the <a href="https://docs.kusari.network/validator-guides/validator/" target="_blank">validator guide</a> to understand what you need to do as a validator.</p>
-<h3 id="-nomination-period"><a class="header" href="#-nomination-period">** Nomination Period**</a></h3>
-<p>Anyone who wants to become a validator can decide to become a validator candidate at any time.
-The candidacy is made public to all nominators, who can vote (nominate) for their favorite validator candidates.</p>
-<p>At the beginning of a new era, the network selects the highest nominated validator candidates, becoming the active set for the forthcoming era.</p>
-<p>!!! warning &quot;Caution as a Nominator&quot;
-<strong>Note</strong> that there are no prerequisites to candidate as a validator. Therefore, we strongly advise you to take a close look at the performance and reputation of the validators you want to stake on. <strong>Nomination is not a set-and-forget approach</strong></p>
-<h3 id="-staking-rewards-distribution"><a class="header" href="#-staking-rewards-distribution">** Staking Rewards Distribution**</a></h3>
-<p>To explain how rewards are paid to validators and nominators, we need to consider <strong>validator and nominator pools</strong>. A validator pool consists of the stake of an elected validator together with the nominators backing it. The nominator pool consists of the sum of nominated coins for that validator.</p>
-<p>As you can see in the illustration below, every validator pool receives essentially the same amount of coins for equal work. The network distributes the coins at the end of each era. However, there is a probabilistic component to staking rewards in era points and tips, but these should average over time.</p>
-<p>Every validator can set a customized commission, and the rest is paid <strong>pro-rata</strong> (proportional to stake) to the nominators. </p>
-<p>!!! note &quot;Validator&quot;
-If a validator stakes on his validator node, his stake counts as self-nomination and is getting pro-rata rewards from the nominator pool.</p>
-<p>Notice in particular that the validator is rewarded twice: once in commission fees for validating (if their commission rate is above 0%) and once for nominating itself with their stake. If a validator's commission is set to 100%, no coins will be paid out to any nominations in the nominator pool.</p>
-<p><img src="assets/reward-distr-02.png#center" alt="img" /></p>
-<h3 id="-rewards-mechanism"><a class="header" href="#-rewards-mechanism">** Rewards Mechanism**</a></h3>
-<p>By now, two concepts should be clear:</p>
-<ul>
-<li>Every validator pool is rewarded equally regardless of the total stake captured by that validator pool</li>
-<li>Smaller validator pools tend to reward nominators more per coin then pools with more stake. </li>
-</ul>
-<p>Notice that the reward mechanism gives nominators economic incentives to favor smaller validator pools.
-The reason behind that is to prevent a concentration of power among a small set of validators. </p>
-<p>Furthermore, it is in alignment with the principle of risk and reward. The smaller the validator pool, the higher the risk that the validator may have a bad reputation or inferior performance and the higher the reward per staked coin.</p>
-<p>Notice that there is no limitation of nominators that can stake on a validator, but there is a limitation of nominators a validator can pay rewards to. This condition is called <strong>oversubscribed</strong>. That said, once a payout on an oversubscribed validator takes place, only the top number of nominators are considered. So pay attention to signs of oversubscription.</p>
-<p>!!! warning &quot;Warning for Validators and Nominators&quot;
-We also remark that when the network slashes a validator slot for misbehavior (e.g. validator offline, Equivocation, etc.) the slashed amount is a fixed percentage (and NOT a fixed amount), which means that validator pools with more stake get slashed more coins. Again, this is done to give nominators an economic incentive to shift their preferences and support less popular validators they consider trustworthy.</p>
-<p>Another point to note is that each validator candidate is free to set their desired commission fee (as a percentage of rewards) to cover operational costs. Since the network pays all validator pools the same, validator pools with lower commission fees pay more to nominators than pools with higher fees. Thus, each validator can choose between increasing their fees to earn more or decreasing their fees to attract more nominators and increase their chances of being elected. In the long term, we expect that all validators will need to be cost-efficient to remain competitive. Validators with a higher reputation will charge slightly higher commission fees (which is fair).</p>
-<h2 id="accounts"><a class="header" href="#accounts"><strong>Accounts</strong></a></h2>
-<hr />
-<p>To add an extra layer of protection, we advise creating two types of accounts:</p>
-<ul>
-<li>Controller Account</li>
-<li>Stash Account</li>
-</ul>
-<p>The <strong>Stash</strong> account is your cold wallet which holds your funds and delegates some functions to the controller account. A cold wallet can be completely offline and is usually used to store crypto. With this system of two wallets, we want to minimize the touchpoints with your stash account to minimize potential risks. </p>
-<p>The <strong>Controller</strong> account is your hot wallet and acts on behalf of your stash account. The controller is entitled to signal decisions about nominating and validating. For instance, it sets preferences for payout account and commission if you are a validator; the controller also sets your session key if you have enough funds to pay for the transaction fees of cause.
-<br>
-</br>
-<img src="assets/accounts.png#center" alt="img" /></p>
-<h2 id="validator-and-nominators"><a class="header" href="#validator-and-nominators"><strong>Validator and Nominators</strong></a></h2>
-<hr />
-<p>As we learned, validator slots are limited, and they do most of the heavy lifting: they produce new block candidates in BABE (block production mechanism), vote, and reach a consensus in GRANDPA (block finality mechanism). In essence, validators validate the state transition function of the blockchain.</p>
-<p>Nominators, on the other hand, have far fewer responsibilities. These include monitoring their validators' performance (uptime), keeping an eye on changing commission rates (a validator can change commission at any time), and general health monitoring of their own and their validators' account. </p>
-<p><br></br></p>
-<p><img src="assets/nominator-validator.png#center" alt="img" /></p>
-<p>!!! tip &quot;Expertise needed&quot;
-While not set-it-and-forget-it, the experience needed to become a nominator is less than the expertise required to be a reliable validator.</p>
-<h2 id="slashing"><a class="header" href="#slashing"><strong>Slashing</strong></a></h2>
-<hr />
-<p>Slashing is a critical concept to protect the network.</p>
-<p>The network has two fundamental requirements that it expects from every validator:</p>
-<ul>
-<li>Be online</li>
-<li>Stay honest</li>
-</ul>
-<p>Slashing will happen if the system detects that a validator misbehaves (e.g., goes offline, attacks the network, or runs modified software) in the network. The validator and its nominators will get slashed in relation to the offense by losing a percentage of their bonded/staked coins.</p>
-<p>The network will add any slashed coin to the Treasury. The rationale for this (rather than burning or distributing them as rewards) is that the Council may revert slashes by simply paying out from the Treasury.</p>
-<p>The option to revert slashes would be helpful in situations such as a faulty runtime causing slashing or forcing validators offline through no fault of their own. </p>
-<p>In the case of legitimate slashing, it moves tokens away from malicious validators to those building the ecosystem through the normal Treasury process.</p>
-<p>!!! warning &quot;Slashing&quot;
-It is essential to realize that slashing occurs for active validations. Each validator is considered its entity for purposes of slashing, just as they are for staking rewards.</p>
-<h3 id="what-are-some-root-causes-for-getting-slashed"><a class="header" href="#what-are-some-root-causes-for-getting-slashed"><strong>What are some root causes for getting slashed?</strong></a></h3>
-<p>We group the root causes into three distinct clusters:</p>
+<p>Staking involves locking your SDX or KSI tokens for a specific purpose and duration to support network security and operations. In return, participants earn rewards. There are two primary ways to engage in staking:</p>
 <ol>
-<li><strong>Liveliness</strong></li>
-<li><strong>Equivocation</strong></li>
-<li><strong>Misconduct</strong></li>
+<li><strong>Nominating</strong>: Support validators by staking tokens.</li>
+<li><strong>Validating</strong>: Run a node to participate in network consensus.</li>
 </ol>
-<p><strong>Liveliness</strong></p>
-<p>Liveliness is concerned about the ability of the validator to be online and responsive. 
-If a validator misses producing a block or sending a heartbeat signal during an era, the validator will be considered offline and put on chill.
-In that case, no slashing of coins occurs, but since the validator did not contribute any work, no block rewards are paid to the validator pool. </p>
-<p><strong>Equivocation</strong></p>
-<p>Multiple signing in the consensus mechanism protocols. To elaborate a bit further:
-The network expects that only one validator validates a block by pointing to the block and signing it.
-If multiple validators claim to have signed the most recent block we have a case of Equivocation, where other validators essentially duplicates the effort of an honest validator.</p>
-<p>In the case of Equivocation the penality is calculated in a manner that takes into account the likelihood of being an coordinated attack or not. </p>
-<p>The penalties are calculated by the following formula</p>
-<pre><code>let x = offenders, n = total number of validators in the active set
-
-penality = MIN((3*x/n)^2 , 1)
-</code></pre>
-<p>=== &quot;Example 01&quot;</p>
-<pre><code>``` 
-Assume that there are 100 validators in the active set, and one of them equivocates in a slot. 
-This is unlikely to be an attack on the network, but much more likely to be a misconfiguration of a validator
-
-x = 1, n = 100
-
-penality = MIN((3*1/100)^2 , 1) = MIN(0,0009, 1) = 0,0009 =  0,09%
-
-The slash will apply to this validator, and the validator will be chilled.
-```
-</code></pre>
-<p>=== &quot;Example 02&quot;</p>
-<pre><code>``` 
-Now assume that there is a group of 5 validators, and all of them have an issue in the same slot.
-
-x = 5, n = 100
-
-penality = MIN((3*5/100)^2 , 1) = MIN(0,0225, 1) = 0,0225 =  2,25%
-
-The slash will be applied to the 5 validators pools and their nominators. All slashed validators will also be chilled.
-
-```
-</code></pre>
-<p>=== &quot;Example 03&quot;
-```
-Now assume that there is a group of 20 validators, and all of them have an issue in the same slot.</p>
-<pre><code>x = 20, n = 100
-
-penality = MIN((3*20/100)^2 , 1) = MIN(0,36, 1) = 0,36 =  36,0%
-
-The slash will be applied to the 20 validator pools and their nominators. All slashed validators will also be chilled.
-```
-</code></pre>
-<p><strong>Misconduct</strong></p>
-<p>Misconducts are behaviors that pose a security or monetary risk to the network or can cause mass collisions.
-Therefore, misconducts are the highest punished behavior in the Kusari and Smart DEX Chain networks. 
-Reported and confirmed slashes in that category can lead to the transfer of the funds inside the validator pool to the Treasury and could ultimately be burned.</p>
-<p>!!! warning
-If a validator is reported for any one of the offenses, they will be removed from the validator set (chilled), and they will not be paid while they are out. They will be considered inactive immediately and will lose their nominators. They need to re-issue intent to validate and again gather support from nominators.</p>
-<h3 id="slashing-consequences"><a class="header" href="#slashing-consequences"><strong>Slashing Consequences</strong></a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: center"></th><th>Isolated Event</th><th>&gt;10% of validators offending</th><th>&gt;33% of validators offending</th></tr></thead><tbody>
-<tr><td style="text-align: center">Liveliness</td><td>Chill, no slash</td><td>Chill, plus penalties that increase linearly with the number of corresponding validators that are offline</td><td>Slash increases, requires 44% to attain a maximum slash of 7%</td></tr>
-<tr><td style="text-align: center">Equivocation</td><td>Chill, plus slash of 0,01% (assuming 300 active validators)</td><td>Slash, increases in a linear manner</td><td>Maximum slash of 100%</td></tr>
-<tr><td style="text-align: center">Misconduct</td><td>100% Slash</td><td>100% Slash</td><td>100% Slash</td></tr>
-</tbody></table>
-</div>
-<p>!!! warning
-All slashes include the loss of all nominators!</p>
-<h3 id="chilling"><a class="header" href="#chilling"><strong>Chilling</strong></a></h3>
-<p>Chilling is the act of stepping back from any nominating or validating. It can be done by a validator or nominator at any time themselves, taking effect in the next era. It can also specifically mean removing a validator from the active validator set by another validator, disqualifying them from the set of electable candidates in the next NPoS cycle.</p>
-<p>Chilling may be voluntary and validator-initiated, e.g. if there is a planned outage in the validator's surroundings or hosting provider, and the validator wants to exit to protect themselves against slashing. When voluntary, chilling will keep the validator active in the current session but will move them to the inactive set in the next. The validator will not lose their nominators.</p>
-<p>When used as part of a punishment (initiated externally), being chilled carries an implied penalty of being un-nominated. It also disables the validator for the remainder of the current era and removes the offending validator from the next election.</p>
+<h2 id="roles-in-staking"><a class="header" href="#roles-in-staking">Roles in Staking</a></h2>
 <hr />
-<h3 id="potential-causes-for-liveliness-slashes"><a class="header" href="#potential-causes-for-liveliness-slashes"><strong>Potential causes for liveliness slashes</strong></a></h3>
-<p>Let's look at events that can cause a slash under Liveliness.
-To break this down, we differentiate between two scenarios:</p>
-<ul>
-<li>You have an existing server</li>
-<li>You install a new server or migrate to a new server</li>
-</ul>
-<p><strong>Existing Server</strong></p>
-<p>Potential causes are:</p>
-<ul>
-<li>Server is offline</li>
-<li>Firewall or network connectivity prevents communication to the network</li>
-<li>SDD is full and prevents further syncing</li>
-</ul>
-<p><strong>New Server / Migration</strong></p>
-<p>Potential causes are:</p>
-<ul>
-<li>The validator instance may not be started with the <code>-- validator</code> flag</li>
-<li>If you switch servers you may not have applied the correct session key</li>
-<li>Your node might not be fully synchronized</li>
-</ul>
-<h3 id="how-to-mitigate-the-risk-of-being-slashed-on-liveliness"><a class="header" href="#how-to-mitigate-the-risk-of-being-slashed-on-liveliness"><strong>How to mitigate the risk of being slashed on Liveliness?</strong></a></h3>
-<p>Let's have a look into what operators can do to reduce the risk of getting slashed under Liveliness.</p>
-<ul>
-<li>Monitoring
-<ul>
-<li>Using monitoring tools like grafana and prometheus, together with PagerDuty for alerts</li>
-<li>Trigger alerts when the service is unreachable or when blocks are stalled (e.g, 100 blocks)</li>
-</ul>
+<h3 id="validators"><a class="header" href="#validators">Validators</a></h3>
+<p>Validators are responsible for creating new blocks and validating transactions. They are crucial to the network's security. Validators put their tokens at stake as collateral. </p>
+<h4 id="rewards-for-validators"><a class="header" href="#rewards-for-validators">Rewards for Validators</a></h4>
+<p>The network is designed to distribute rewards equally among all validators. However, validators can set a commission for their services. The remaining rewards are distributed proportionally among the nominators.</p>
+<h3 id="nominators"><a class="header" href="#nominators">Nominators</a></h3>
+<p>Nominators support validators by staking their tokens. They share in the rewards earned by validators.</p>
+<h4 id="rewards-for-nominators"><a class="header" href="#rewards-for-nominators">Rewards for Nominators</a></h4>
+<p>Rewards are distributed pro-rata among the nominators after deducting the validator's commission. This means that your share of the rewards will increase with the number of tokens you have staked.</p>
+<h2 id="understanding-staking"><a class="header" href="#understanding-staking">Understanding Staking</a></h2>
+<hr />
+<h3 id="nomination-period"><a class="header" href="#nomination-period">Nomination Period</a></h3>
+<p>Anyone can become a validator candidate. Nominators can vote for validator candidates they trust. At the beginning of each era, the network selects the highest nominated validator candidates as the active set for the next era.</p>
+<h3 id="staking-rewards-distribution"><a class="header" href="#staking-rewards-distribution">Staking Rewards Distribution</a></h3>
+<p>Rewards are distributed at the end of each era. Every validator pool receives essentially the same amount of tokens for equal work. However, each validator can set a customized commission. The rest is paid pro-rata to the nominators.</p>
+<h3 id="slashing"><a class="header" href="#slashing">Slashing</a></h3>
+<p>Slashing occurs if a validator fails to perform its duties or acts maliciously. Slashed tokens are usually added to the Treasury.</p>
+<h2 id="accounts-for-staking"><a class="header" href="#accounts-for-staking">Accounts for Staking</a></h2>
+<hr />
+<p>For added security, it is recommended to create two types of accounts:</p>
+<ol>
+<li><strong>Stash Account</strong>: This is your cold wallet. It holds your funds and delegates certain functions to the controller account.</li>
+<li><strong>Controller Account</strong>: This is your hot wallet. It acts on behalf of your stash account and is used for making decisions about nominating or validating.</li>
+</ol>
+<h2 id="risks-and-mitigations"><a class="header" href="#risks-and-mitigations">Risks and Mitigations</a></h2>
+<hr />
+<h3 id="liveliness"><a class="header" href="#liveliness">Liveliness</a></h3>
+<p>Validators must be online and responsive. If a validator is offline, it may be chilled (temporarily removed from the validator set) and won't receive block rewards.</p>
+<h3 id="equivocation"><a class="header" href="#equivocation">Equivocation</a></h3>
+<p>This occurs when a validator illicitly creates multiple blocks for the same slot. It is considered a serious offense and is punished by slashing.</p>
+<h3 id="misconduct"><a class="header" href="#misconduct">Misconduct</a></h3>
+<p>This includes behaviors that pose a security or monetary risk to the network. Misconduct is severely punished by slashing.</p>
+<h2 id="how-to-mitigate-risks"><a class="header" href="#how-to-mitigate-risks">How to Mitigate Risks</a></h2>
+<hr />
+<ol>
+<li><strong>Monitor Your Node</strong>: Use monitoring tools to keep track of your node's status.</li>
+<li><strong>Secure Your Server</strong>: Ensure that your server is secure. Regularly update your software and protect your server with firewalls.</li>
+<li><strong>Be Cautious with Validator Selection</strong>: If you are a nominator, choose validators with a good reputation and performance.</li>
+</ol>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<hr />
+<p>Staking is an essential component of the SwapDex and Kusari networks. It is crucial for network security and offers an opportunity to earn rewards. However, it comes with responsibilities and risks. Whether you choose to be a nominator or a validator, it is important to understand the mechanics of staking, monitor your investments, and take steps to mitigate risks.
+``The above content is a more detailed and structured version of the information you provided. It covers the essentials of staking within the SwapDex and Kusari networks, including the roles of validators and nominators, how staking rewards are distributed, the concept of slashing, and the importance of security and risk mitigation. This format aims to provide a clear and comprehensive understanding of staking for anyone interested in participating in the SwapDex or Kusari networks.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-bond-and-nominate-your-sdx"><a class="header" href="#how-to-bond-and-nominate-your-sdx">How To Bond And Nominate Your SDX</a></h1>
+<ol>
+<li>
+<p>Go to the <strong>&quot;Validators&quot;</strong> tab in the left menu and select <strong>“Staking”</strong>.</p>
 </li>
-<li>Checklists
+<li>
+<p>On the top left, select the account that holds the SDX tokens that you would like to stake (Substrate accounts only).</p>
+</li>
+<li>
+<p>Next, select <strong>“Staking Management”</strong> on the top right. Here you will have the options to bond, stake, withdraw, etc.</p>
+</li>
+<li>
+<p>Select <strong>“bond”</strong> to get started.</p>
+<div align="center">
+   <img src="staking/./assets/staking_nom1.png" alt="SwapDEX Wallet">
+ </div>
 <ul>
-<li>Ensure that session-keys are verified on the destination server</li>
-<li>Ensure that the <code>--validator</code> flag exists</li>
-<li>Understand server migration wait times. It takes at least 2 eras before new keys are applied</li>
-</ul>
+<li>
+<p>Firstly, choose your reward destination. There are 3 options:</p>
+<ol>
+<li>Available balance will add your rewards directly to your wallet.</li>
+<li>Bonded balance will add your rewards to your bonded amount, therefore, increasing the amount you have bonded (staked).</li>
+<li>If you choose another address, your rewards will be sent to an address of your choice.</li>
+</ol>
+<div align="center">
+  <img src="staking/./assets/staking_nom2.png" alt="SwapDEX Wallet">
+  </div>
+</li>
+<li>
+<p>Underneath is your option to bond the amount of SDX that you want to stake on a validator. Once you have chosen how much you want to stake, select <strong>“Bond And Validate”</strong>.</p>
+</li>
+<li>
+<p>You will then be asked to confirm. To confirm, select <strong>“Sign”</strong>.</p>
+<div align="center">
+  <img src="staking/./assets/staking_nom3.png" alt="SwapDEX Wallet">
+  </div>
 </li>
 </ul>
-<hr />
-<h3 id="potential-causes-for-equivocation-slashes"><a class="header" href="#potential-causes-for-equivocation-slashes"><strong>Potential causes for equivocation slashes</strong></a></h3>
-<p>Equivocation slashes are caused if multiple validators claim to have signed the same block.
-This can be caused by:</p>
+<blockquote>
+<p>Note: With our native mobile and desktop apps, your wallet signatures will happen automatically, but with our web app, you will need to manually sign the transactions when you get a pop-up. You will be notified on the final step once your transaction is successful. Return to the staking page.</p>
+</blockquote>
+</li>
+<li>
+<p>Now you have selected the wallet you want to bond from and how much you want to bond, you will now need to select the wallets that you would like to bond your SDX to.</p>
 <ul>
-<li>If you cloned a validator to be used as a backup or during the migration of your validator to a new server.</li>
-<li>Using a failover system to provide &quot;zero-downtime&quot;</li>
-<li>Copying the keystore folder when trying to copy the database </li>
+<li>
+<p>You will find the list of the current validators to choose from under <strong>“Overview”</strong> on the left in the staking menu.</p>
+</li>
+<li>
+<p>Choose the validator/s that you would like to bond your SDX tokens to. You can choose up to 16 validators per wallet that you use to stake with.</p>
+</li>
 </ul>
-<h3 id="how-to-mitigate-the-risk-of-being-slashed-on-equivocation"><a class="header" href="#how-to-mitigate-the-risk-of-being-slashed-on-equivocation"><strong>How to mitigate the risk of being slashed on Equivocation?</strong></a></h3>
+<blockquote>
+<p>Note: Choose your validators wisely: Part of your bonded assets may be irrevocably lost if the validator does not behave appropriately.</p>
+</blockquote>
 <ul>
-<li>Never copy your <strong>Keystore</strong> folder to another server</li>
-<li>If your server went offline spontaneously, do not panic and attempt to restore a cloned server to minimize downtime</li>
-<li>Use a backup server, if it is not fully synced use a snapshot to do so quickly using 7zz for extraction.</li>
-<li>Apply a freshly generated set of keys from this server to the stash</li>
-<li>It is better to be chilled with no loss than attempt a zero downtime maneuver and get slashed</li>
+<li>
+<p>First, make sure you have your chosen wallet selected on the top left, it may revert back to the first wallet in the list if you have more than one.</p>
+</li>
+<li>
+<p>Now go back to <strong>“Staking Management”</strong> on the top right and select <strong>“Nominate”</strong>.</p>
+</li>
 </ul>
-<hr />
-<h3 id="potential-causes-for-unintentional-misconduct"><a class="header" href="#potential-causes-for-unintentional-misconduct"><strong>Potential causes for unintentional misconduct</strong></a></h3>
-<p>In this paragraph, we assume that Misconduct is conducted unintentionally and want to provide some reasons for a slash under unintentional Misconduct.</p>
+<div align="center">
+ <img src="staking/./assets/staking_nom4.png" alt="SwapDEX Wallet">
+ </div>
+</li>
+<li>
+<p>Once you have read the page and are happy to bond your tokens, select <strong>“Continue”</strong>.</p>
+</li>
+<li>
+<p>Now choose the validators that you wish to nominate your SDX tokens to.</p>
+<div align="center">
+ <img src="staking/./assets/staking_nom5.png" alt="SwapDEX Wallet">
+ </div>
+</li>
+</ol>
+<h2 id="clearing-your-nominations"><a class="header" href="#clearing-your-nominations">Clearing Your Nominations</a></h2>
 <ul>
-<li>Using a binary from a third-party location that might be altered </li>
-<li>Compromised server in which an unwanted third party alters code in an undesired manner</li>
+<li>If you wish to clear your nominations, you do so by selecting the account that you would like to clear your nominations from and select <strong>“Clear Nominations”</strong>.</li>
 </ul>
-<h3 id="how-to-mitigate-the-risk-of-being-slashed-on-unintentional-misconduct"><a class="header" href="#how-to-mitigate-the-risk-of-being-slashed-on-unintentional-misconduct"><strong>How to mitigate the risk of being slashed on unintentional Misconduct?</strong></a></h3>
-<ul>
-<li>Always download the source files and binaries from the official SwapDEX server</li>
-<li>Verify the hash of the downloaded binaries</li>
-<li>Use the &quot;secure validator&quot; server setup on the w3f rep or adhere to its principles</li>
-<li>Basic security advice applies, use a firewall, manage user access, use SSH certificate access etc.</li>
-<li>Avoid using your server as a general-purpose machine. Greater interaction = greater risk.</li>
-</ul>
-<hr />
-<p>!!! Warning
-Work in progress content can change and it's not definitive :building_construction:.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="run-a-validator"><a class="header" href="#run-a-validator">Run a Validator</a></h1>
 <p>This guide provides instructions on how to run a SwapDex validator node. There are two options available:</p>
 <ol>
@@ -449,7 +425,6 @@ Work in progress content can change and it's not definitive :building_constructi
 <p>It's important to note that during the installation process, the script may prompt you for additional information or ask for confirmation before proceeding. Please read the prompts carefully and respond accordingly.</p>
 <p>If you encounter any issues during the installation process, please refer to the script's output and logs for error messages or contact the support team for assistance.</p>
 <p><strong>Note:</strong> It's recommended to have basic knowledge of server administration and networking concepts before proceeding with the installation.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="faq"><a class="header" href="#faq">FAQ</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="wallets-management"><a class="header" href="#wallets-management">Wallets Management</a></h1>
 <p>This guide provides instructions on how to create a SwapDex wallet. There are two options available:</p>
 <ol>
@@ -566,6 +541,303 @@ Work in progress content can change and it's not definitive :building_constructi
   <img src="wallets/../assets/wallet.png" alt="SwapDEX Wallet">
 </div>
 <p>Congratulations! You have successfully created your wallets on SwapDEX. You can now start bridging assets from other chains to your SwapDEX wallet to begin trading on our exchanges or buying NFTs from our marketplace.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-create-an-asset-"><a class="header" href="#how-to-create-an-asset-">How To Create An Asset 🪙</a></h1>
+<p>Follow these steps to create your own asset on the SwapDEX Dashboard App:</p>
+<ol>
+<li>
+<p><strong>Access Wallets Tab</strong>: Expand your wallets tab on the left side menu of the SwapDEX Dashboard App.</p>
+</li>
+<li>
+<p><strong>Select Assets</strong>: Select &quot;Assets&quot; and it will populate a list of your current NFT collections.</p>
+</li>
+<li>
+<p><strong>Create Asset</strong>: On the top right, select “Create”.</p>
+</li>
+<li>
+<p><strong>Configure Asset</strong>: Choose the account to which you would like your asset minted. Then choose the name and abbreviation that you would like for your asset (the recommended abbreviation is 3 letters, all capitals). Minimum balance is already set and there should be no reason to change your asset ID. Select “Next”.</p>
+</li>
+</ol>
+<div align="center">
+  <img src="wallets/./assets/create_asset1.png" alt="SwapDEX Wallet">
+</div>
+<ol start="5">
+<li><strong>Set Accounts</strong>: You will be prompted for 3 accounts: Admin, Issuer, and Freezer accounts. Unless you have a specific reason to change them, it is recommended that you keep them all the same account.</li>
+</ol>
+<div align="center">
+  <img src="wallets/./assets/create_asset2.png" alt="SwapDEX Wallet">
+</div>
+<ol start="6">
+<li>
+<p><strong>Sign Transaction</strong>: Sign your transaction. Note: With our native mobile and desktop apps, your wallet signatures will happen automatically as the EVM and Substrate wallet are inbuilt, but with our web app, you will need to manually sign the transactions. You will get an extra pop-up that you will need to sign from Substrate.js.</p>
+</li>
+<li>
+<p><strong>Mint Asset</strong>: Once you have created your asset, you will find it under assets in your wallets tab. From here you can mint and send your assets. To mint some of your asset, you will need to select “Mint” on the far right of your asset. Choose the account that you would like to mint to and the amount that you would like to mint. To mint, select “Mint”.</p>
+</li>
+</ol>
+<div align="center">
+  <img src="wallets/./assets/create_asset3.png" alt="SwapDEX Wallet">
+</div>
+<ol start="8">
+<li><strong>Transfer Asset</strong>: You now have minted some of your asset. To send your asset, select “Transfer”. You will find the Transfer function next to the Mint function that you just used. Enter the address that you would like to send your asset to and the amount you would like to send and select “Make Transfer”.</li>
+</ol>
+<div align="center">
+  <img src="wallets/./assets/create_asset4.png" alt="SwapDEX Wallet">
+</div>
+<ol start="9">
+<li><strong>Receive Asset</strong>: For anyone to receive an asset from you, they can also use our “receive” option. </li>
+</ol>
+<div align="center">
+  <img src="wallets/./assets/create_asset5.png" alt="SwapDEX Wallet">
+</div>
+If you would like to receive some of your asset, you can send the Substrate account you would like to receive your assets to the sender. You can also use the “receive” option in the transfer window to use a QR code to receive the asset. Just make sure you have the correct account details for which you would like to receive the asset.
+<div align="center">
+  <img src="wallets/./assets/create_asset6.png" alt="SwapDEX Wallet">
+</div>
+<p>You can send and receive any asset you like by following these steps. Happy trading! 🚀</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bridging-with-swapdex"><a class="header" href="#bridging-with-swapdex">Bridging With SwapDEX</a></h1>
+<ol>
+<li>
+<p>On the left side menu of the SwapDEX Dashboard, select <strong>“Bridge”</strong>.</p>
+</li>
+<li>
+<p>Select the chain that you would like to bridge from.</p>
+<ul>
+<li><strong>Example</strong>: If you would like to bridge SDXb from the Binance Smart Chain to our SwapDEX chain, then here you will select Binance Smart Chain from the list.</li>
+<li><strong>Note</strong>: Also make sure your wallet is connected to BSC or the chain which you are bridging from.</li>
+</ul>
+</li>
+</ol>
+<div align="center">
+      <img src="bridge/./assets/bridge1.png" alt="SwapDEX Wallet">
+   </div>
+<ol start="3">
+<li>After you have selected the chain you want to bridge from, you can then choose the asset that you would like to bridge over to the SwapDEX Chain.</li>
+</ol>
+<div align="center">
+      <img src="bridge/./assets/bridge2.png" alt="SwapDEX Wallet">
+    </div>
+<ol start="4">
+<li>
+<p>You will then be prompted to connect your EVM. You can either choose <strong>“Select EVM address”</strong> to automatically import it or you can ‘copy and paste’ your address in the box provided. Then select <strong>“Next”</strong>.</p>
+</li>
+<li>
+<p>You will now be able to choose what network of ours you want to bridge to, EVM or Substrate. Select <strong>“Next”</strong>.</p>
+<ul>
+<li><strong>Hint</strong>: To use our Dex’s or our marketplace, we would suggest you choose Substrate. You can bridge between our Substrate and our EVM later if you want.</li>
+<li><strong>Note</strong>: Depending on what you are bridging and where you are bridging to, the steps might be slightly different, but they will still be easy to follow and will still be very similar to this walkthrough.</li>
+</ul>
+</li>
+<li>
+<p>If you have chosen Substrate, then you will be asked to connect to your substrate address. Select <strong>“Connect To Substrate Account”</strong> under destination address. A new menu will appear underneath with a list of your Substrate accounts.</p>
+</li>
+<li>
+<p>Select the substrate account that you would like to bridge your assets to. Select <strong>“Next”</strong>.</p>
+</li>
+</ol>
+<div align="center">
+      <img src="bridge/./assets/bridge3.png" alt="SwapDEX Wallet">
+    </div>
+<ol start="8">
+<li>
+<p>You will then be asked to choose the amount of that asset you would like to bridge. Enter the amount you want to bridge and select <strong>“Next”</strong>.</p>
+</li>
+<li>
+<p>The SwapDEX bridge will automatically calculate the gas to bridge your asset and then you will see the final page. Here select <strong>“Start Transfer”</strong>.</p>
+</li>
+</ol>
+<div align="center">
+      <img src="bridge/./assets/bridge4.png" alt="SwapDEX Wallet">
+    </div>
+<ol start="10">
+<li>
+<p>You will be prompted with a warning. Once you have read the warning, select either <strong>Cancel</strong> or <strong>Confirm</strong>.</p>
+<ul>
+<li><strong>Note</strong>: If you are using our native desktop or mobile apps, the transfer will be automatic. If you are using our web app, you will need to sign 2 signatures. They will automatically pop up. Do not close your browser window until the transfer is successful.</li>
+</ul>
+</li>
+<li>
+<p>Your new balance will be available to be viewed in your wallet under <strong>“wallets”</strong> in the left side menu of the SwapDEX Dashboard.</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="welcome-to-swapdex-nft-marketplace-"><a class="header" href="#welcome-to-swapdex-nft-marketplace-">Welcome to SwapDEX NFT Marketplace 🎨🚀</a></h1>
+<p>Welcome to the SwapDEX NFT Marketplace, your one-stop destination for discovering, buying, selling, and trading non-fungible tokens (NFTs). Our platform is designed to empower creators and collectors by providing a seamless and secure environment for NFT transactions.</p>
+<h2 id="why-choose-swapdex-nft-marketplace-"><a class="header" href="#why-choose-swapdex-nft-marketplace-">Why Choose SwapDEX NFT Marketplace? 🌟</a></h2>
+<ul>
+<li>
+<p><strong>Diverse Collection</strong>: Explore an extensive range of digital assets including art, music, videos, collectibles, and more.</p>
+</li>
+<li>
+<p><strong>User-Friendly Interface</strong>: Our platform is designed with simplicity in mind, making it easy for both beginners and experienced users to navigate.</p>
+</li>
+<li>
+<p><strong>Secure Transactions</strong>: Experience peace of mind with our secure blockchain-based platform that ensures the authenticity and ownership of NFTs.</p>
+</li>
+<li>
+<p><strong>Low Fees</strong>: Enjoy competitive transaction fees that ensure creators receive the maximum value for their work.</p>
+</li>
+<li>
+<p><strong>Community-Driven</strong>: Be a part of an active and growing community of artists, collectors, and enthusiasts.</p>
+</li>
+</ul>
+<h2 id="getting-started-"><a class="header" href="#getting-started-">Getting Started 🚀</a></h2>
+<ol>
+<li>
+<p><strong>Create an Account</strong>: Sign up and create your digital wallet on SwapDEX.</p>
+</li>
+<li>
+<p><strong>Browse the Marketplace</strong>: Explore the diverse collection of NFTs available for sale or auction.</p>
+</li>
+<li>
+<p><strong>Buy or Sell NFTs</strong>: Use our intuitive platform to buy your favorite NFTs or list your own creations for sale or auction.</p>
+</li>
+<li>
+<p><strong>Engage with the Community</strong>: Join discussions, participate in events, and connect with other NFT enthusiasts.</p>
+</li>
+</ol>
+<p>Embark on your NFT journey with SwapDEX NFT Marketplace today! Whether you are an artist looking to monetize your creations, a collector seeking rare digital assets, or an enthusiast eager to explore the world of NFTs, SwapDEX is the place for you.</p>
+<p>Let's redefine the digital art space together!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="buying-nfts"><a class="header" href="#buying-nfts">Buying NFT's</a></h1>
+<ol>
+<li>
+<p>Expand the <strong>SwapDEX NFT marketplace</strong> on the left side menu of the App.</p>
+</li>
+<li>
+<p>Select <strong>&quot;Market&quot;</strong> and it will populate the current NFTs that are for sale or auction.</p>
+</li>
+</ol>
+<div align="center">
+    <img src="nft_marketplace/buy/../assets/marketplace_buy1.png" alt="SwapDEX Wallet">
+</div>
+<ol start="3">
+<li>To bid, select <strong>&quot;Place Bid&quot;</strong> then choose the wallet you want to pay the bidding transaction fees from, as well as the location that you want to receive the NFT. Enter your referral address here if you have one.</li>
+</ol>
+<div align="center">
+    <img src="nft_marketplace/buy/../assets/marketplace_buy2.png" alt="SwapDEX Wallet">
+</div>
+<ol start="4">
+<li>
+<p>If an NFT is up for sale (not for auction), you can immediately buy it by choosing <strong>&quot;Buy NFT&quot;</strong>.</p>
+</li>
+<li>
+<p>If you win an auction, you can claim it by going back to <strong>&quot;account&quot;</strong> and selecting the downward arrow on the far right of the collection that you were bidding on. Then select the 'pencil symbol&quot; on the right and select <strong>&quot;claim&quot;</strong>.</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="winning-an-nft-auctions"><a class="header" href="#winning-an-nft-auctions">Winning An NFT Auctions</a></h1>
+<ol>
+<li>
+<p>If you win an auction, go to your <strong>&quot;account&quot;</strong> tab in the left menu.</p>
+</li>
+<li>
+<p>Select the downward arrow on the far right of the collection that you were bidding on.</p>
+</li>
+<li>
+<p>Select the green <strong>“Claim&quot;</strong> button on the right of the screen.</p>
+</li>
+</ol>
+<div align="center">
+    <img src="nft_marketplace/buy/../assets/marketplace_claiming1.png" alt="SwapDEX Wallet">
+    </div>
+<ol start="4">
+<li>A new window will pop up with the NFT’s details. Select <strong>“claim NFT”</strong> when prompted.</li>
+</ol>
+<div align="center">
+      <img src="nft_marketplace/buy/../assets/marketplace_claiming2.png" alt="SwapDEX Wallet">
+    </div>
+<ol start="5">
+<li>The NFT will now be in your wallet.</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="selling-nfts"><a class="header" href="#selling-nfts">Selling NFT's</a></h1>
+<ol>
+<li>
+<p>Go to the <strong>&quot;account&quot;</strong> tab under <strong>&quot;NFT marketplace&quot;</strong> in the left menu.</p>
+</li>
+<li>
+<p>Select the downwards arrow on the far right of the collection that you wish to sell an NFT from.</p>
+</li>
+<li>
+<p>Select the 'gear symbol' under <strong>‘actions’</strong> on the right of the NFT that you wish to sell.</p>
+</li>
+</ol>
+<div align="center">
+      <img src="nft_marketplace/sell/../assets/marketplace_sell1.png" alt="SwapDEX Wallet">
+    </div>
+<ol start="4">
+<li>
+<p>Choose the option that you want:</p>
+<div align="center">
+     <img src="nft_marketplace/sell/../assets/marketplace_sell2.png" alt="SwapDEX Wallet">
+ </div>
+<ul>
+<li>If you would like to sell your NFT, choose your price, the asset you would like to sell the NFT for, and select the category that your NFT fits under, and then select <strong>&quot;Sell NFT&quot;</strong>.</li>
+<li>If you would prefer to put your NFT up for auction instead, choose your price, the asset you would like to sell the NFT for, and the category your NFT fits under. When you select your chosen auction end time, choose a local time, as it uses your local web browser’s time. Also, double check you have the correct date that you wish for your auction to finish. To finish, select <strong>&quot;set auction&quot;</strong>.</li>
+</ul>
+</li>
+</ol>
+<div align="center">
+      <img src="nft_marketplace/sell/../assets/marketplace_sell3.png" alt="SwapDEX Wallet">
+    </div>
+<ol start="5">
+<li>To cancel an auction or a sale, go back and select the 'gear symbol' again. You will now have the option to cancel your auction or sale (however, if your auction already has a bid you cannot cancel).</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="our-referral-and-commission-system"><a class="header" href="#our-referral-and-commission-system">Our Referral And Commission System</a></h1>
+<h2 id="seller"><a class="header" href="#seller">Seller</a></h2>
+<h3 id="setting-your-commission"><a class="header" href="#setting-your-commission">Setting Your Commission</a></h3>
+<ul>
+<li>If you want to incentivize referrals by giving a commission to someone for selling your NFT, you can do this by setting the <strong>“Add Share For Referrals (%)”</strong> when selling your NFT.</li>
+</ul>
+<div align="center">
+      <img src="nft_marketplace/earn/../assets/marketplace_ref1.png" alt="SwapDEX Wallet">
+    </div>
+<ul>
+<li>For a walkthrough on how to sell an NFT, you can go to our selling NFTs walkthrough page <a href="nft_marketplace/earn/referrals_and_comissions.html#">here</a>.</li>
+</ul>
+<h2 id="referrer"><a class="header" href="#referrer">Referrer</a></h2>
+<h3 id="setting-up-your-referral-wallet"><a class="header" href="#setting-up-your-referral-wallet">Setting Up Your Referral Wallet</a></h3>
+<ol>
+<li>
+<p>Expand the SwapDEX NFT marketplace, on the left side menu of the SwapDEX Dashboard App and select <strong>“Referrals”</strong>.</p>
+</li>
+<li>
+<p>Choose the wallet you want to register for referrals and select <strong>“register for referrals”</strong>.</p>
+</li>
+<li>
+<p>Choose the percentage you would like to give as a cashback to your buyer as an incentive.</p>
+<ul>
+<li>Note: The percentage you set is basically a discount of what the seller is giving to you as the referrer to your customers. So, if a seller has a 20% referral percentage, you would set your wallet's referral percentage at 50% to split the commission and give 10% off as cashback when the buyer purchases an NFT through your link.</li>
+</ul>
+</li>
+</ol>
+<div align="center">
+      <img src="nft_marketplace/earn/../assets/marketplace_ref2.png" alt="SwapDEX Wallet">
+    </div>
+<ol start="4">
+<li>Select <strong>“Register”</strong>.</li>
+</ol>
+<h3 id="advertising-your-referred-nft"><a class="header" href="#advertising-your-referred-nft">Advertising Your Referred NFT</a></h3>
+<ul>
+<li>When in the NFT marketplace, there will be an option to <strong>‘share’</strong> an NFT. This is located to the left of <strong>“Buy NFT”</strong>.</li>
+</ul>
+<div align="center">
+      <img src="nft_marketplace/earn/../assets/marketplace_ref3.png" alt="SwapDEX Wallet">
+    </div>
+<ul>
+<li>When selected, you will be prompted with multiple options.</li>
+</ul>
+<div align="center">
+      <img src="nft_marketplace/earn/../assets/marketplace_ref4.png" alt="SwapDEX Wallet">
+    </div>
+<ul>
+<li>Select the option you would like to use to create a shareable link that will automatically reference your wallet ID, then share wherever you would like to advertise, your own site, Facebook, a blog, and so on.</li>
+</ul>
+<h3 id="claiming-your-referral-rewards"><a class="header" href="#claiming-your-referral-rewards">Claiming Your Referral Rewards</a></h3>
+<ol>
+<li>
+<p>Expand the SwapDEX NFT marketplace, on the left side menu of the SwapDEX Dashboard App and select <strong>“Referrals”</strong>.</p>
+</li>
+<li>
+<p>On the right, there will be an option to claim your referrals.</p>
+</li>
+</ol>
 
                     </main>
 

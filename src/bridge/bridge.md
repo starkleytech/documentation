@@ -1,3 +1,24 @@
+## Prerequisites Before Bridging 📋
+
+Before you start using the SwapDEX Bridge, it's essential to have your wallets set up and ready for transactions. 
+
+### Wallet Setup Guide 🛠️
+
+1. **Create Wallets**: If you don’t have them already, create wallets on the networks you want to bridge assets between (Ethereum, Binance Smart Chain, etc.).
+
+2. **Fund Wallets**: Ensure that your wallets have enough funds not only in the assets you want to bridge but also in the native cryptocurrency (e.g., ETH for Ethereum, BNB for Binance Smart Chain) to cover transaction fees.
+
+3. **Fund SwapDEX Wallet for Gas Fees**: You will need some funds in your SwapDEX wallet to pay for the gas fees. If you don't have funds, you can request them from the faucet bot by joining the SwapDEX Discord server. [Join Discord](https://discord.swapdex.network) and look for the faucet bot to request funds.
+
+4. **Connect Wallets to SwapDEX**: Connect your wallets to the SwapDEX platform. Make sure that you are connecting the correct wallet to the corresponding network.
+
+5. **Security**: Double-check the security of your wallets. Keep your private keys and seed phrases safe.
+
+
+Please follow our detailed [Wallet Setup Guide](../wallets/index.md) to ensure your wallets are properly configured.
+
+Once your wallets are set up, you are ready to use the SwapDEX Bridge!
+
 # Bridging With SwapDEX
 
 1.  On the left side menu of the SwapDEX Dashboard, select **“Bridge”**.

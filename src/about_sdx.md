@@ -25,7 +25,7 @@ What are the tokenomics for SDX?
 
 ## Official Foreign Addresses of Tokens (Bridge)
 
-- **SDX on BSC (bSDX)**: `0x351494731D28f35d648C200b35E628aecba3E577`
+- **SDX on BSC (SDXb)**: `0xa4d92138537bB0bbeaEab095381Be422D785E7C4`
 - **SDX on ETH (SDX)**: `0x6b5FeC1351C9ff830db0ebE343a235976b6352Ea`
 
 ## Official Links

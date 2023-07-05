@@ -6,10 +6,10 @@ Welcome to **SwapDex**, your gateway to decentralized finance. We offer limit or
 
 What are the tokenomics for SDX?
 
-- **Starting Supply**: 200,000,000 SDX
-- **Circulating Supply**: 110 Million SDX
-- **Foundation**: 50 Million SDX
-- **Treasury**: 40 Million SDX (fully released)
+- **TOTAL SUPPLY**: 266,000,000 SDX
+- **CURRENT SUPPLY**: 176,000,000
+- **FOUNDATION**: 90 million SDX (locked off supply)
+- **TREASURY**: 5 million SDX (growing but in supply)
 
 # How to Add SDX in MetaMask
 
